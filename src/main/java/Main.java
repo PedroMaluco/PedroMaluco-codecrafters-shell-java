@@ -7,8 +7,13 @@ public class Main {
     	while(true) {
         System.out.print("$ ");
         String command = sc.nextLine().toLowerCase();
-        if(command.equals("exit")) {
+        String[] fragmented = command.split(" ");
+        if(fragmented[1].equals("exit")) {
         	break;
+        }
+        if(fragmented[1].equals("echo")) {
+        	System.out.println(command);
+        	
         }
         else {
         	System.out.println(command+": command not found");
