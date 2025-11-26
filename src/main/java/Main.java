@@ -12,7 +12,7 @@ public class Main {
         	break;
         }
         if(fragmented[0].equals("echo")) {
-        	String printable = command.substring(4, command.length());
+        	String printable = command.substring(5, command.length());
         	System.out.println(printable);
         	
         }
