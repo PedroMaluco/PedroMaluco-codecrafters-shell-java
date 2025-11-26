@@ -23,7 +23,7 @@ public class Main {
         	}
         	else {
         		String printable = fragmented[1];
-            	System.out.println(printable + "is a shell builtin");
+            	System.out.println(printable + " is a shell builtin");
         	}
         }
         else {
