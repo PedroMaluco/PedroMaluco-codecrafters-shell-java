@@ -8,11 +8,12 @@ public class Main {
         System.out.print("$ ");
         String command = sc.nextLine().toLowerCase();
         String[] fragmented = command.split(" ");
-        if(fragmented[1].equals("exit")) {
+        if(fragmented[0].equals("exit")) {
         	break;
         }
-        if(fragmented[1].equals("echo")) {
-        	System.out.println(command);
+        if(fragmented[0].equals("echo")) {
+        	String printable = command.substring(4, command.length());
+        	System.out.println(printable);
         	
         }
         else {
