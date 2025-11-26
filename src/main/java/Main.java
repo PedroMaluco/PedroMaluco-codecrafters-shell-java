@@ -16,6 +16,16 @@ public class Main {
         	System.out.println(printable);
         	
         }
+        if(fragmented[0].equals("type")) {
+        	if (!fragmented[1].equals("exit") || !fragmented[1].equals("echo") || !fragmented[1].equals("type")) {
+        		String printable = command.substring(5, command.length());
+        		System.out.println(printable+": command not found");
+        	}
+        	else {
+        		String printable = fragmented[1];
+            	System.out.println(printable + "is a shell builtin");
+        	}
+        }
         else {
         	System.out.println(command+": command not found");
         	}
