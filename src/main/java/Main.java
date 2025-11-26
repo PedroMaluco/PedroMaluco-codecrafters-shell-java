@@ -19,7 +19,7 @@ public class Main {
         if(fragmented[0].equals("type")) {
         	if (!fragmented[1].equals("exit") || !fragmented[1].equals("echo") || !fragmented[1].equals("type")) {
         		String printable = command.substring(5, command.length());
-        		System.out.println(printable+": command not found");
+        		System.out.println(printable+": command not found - but the error lies here!");
         	}
         	else {
         		String printable = fragmented[1];
