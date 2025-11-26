@@ -6,8 +6,8 @@ public class Main {
     	Scanner sc = new Scanner(System.in);
     	while(true) {
         System.out.print("$ ");
-        String command = sc.nextLine();
-        if(command == "exit") {
+        String command = sc.nextLine().toLowerCase();
+        if(command.equals("exit")) {
         	break;
         }
         else {
