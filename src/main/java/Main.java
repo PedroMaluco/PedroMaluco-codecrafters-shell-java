@@ -1,3 +1,4 @@
+import java.lang.reflect.Executable;
 import java.util.Scanner;
 
 public class Main {
@@ -17,13 +18,17 @@ public class Main {
         	
         }
         if(fragmented[0].equals("type")) {
-        	if (!fragmented[1].equals("exit") && !fragmented[1].equals("echo") && !fragmented[1].equals("type")) {
-        		String printable = command.substring(5, command.length());
-        		System.out.println(printable+": not found");
-        	}
-        	else {
+        	if (fragmented[1].equals("exit") || fragmented[1].equals("echo") || fragmented[1].equals("type")) {
         		String printable = fragmented[1];
             	System.out.println(printable + " is a shell builtin");
+        	}
+        	else {
+        		String minusType = command.substring(5, command.length());
+        		String[] path = minusType.split(":/");
+        		for(String exe : path) {
+        			
+        		}
+        	
         	}
         }
         if(!fragmented[0].equals("exit") && !fragmented[0].equals("echo") && !fragmented[0].equals("type")) {
