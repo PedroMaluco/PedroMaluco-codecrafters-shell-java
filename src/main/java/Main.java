@@ -26,7 +26,7 @@ public class Main {
             	System.out.println(printable + " is a shell builtin");
         	}
         }
-        else {
+        if(!fragmented[0].equals("exit") && !fragmented[0].equals("echo") && !fragmented[0].equals("type")) {
         	System.out.println(command+": command not found");
         	}
         }
