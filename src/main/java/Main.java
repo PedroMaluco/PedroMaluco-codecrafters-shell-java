@@ -1,3 +1,4 @@
+import java.io.File;
 import java.lang.reflect.Executable;
 import java.util.Scanner;
 
@@ -9,6 +10,7 @@ public class Main {
         System.out.print("$ ");
         String command = sc.nextLine().toLowerCase();
         String[] fragmented = command.split(" ");
+        String mainCommand = fragmented[0];
         if(fragmented[0].equals("exit")) {
         	break;
         }
@@ -24,10 +26,16 @@ public class Main {
         	}
         	else {
         		String minusType = command.substring(5, command.length());
-        		String[] path = minusType.split(":/");
-        		for(String exe : path) {
+        		String path = System.getenv("PATH");
+        		String[] fragmentedPath = path.split(":");
+        		for (int i=0; i < path.length(); i++) {
+        			File file = new File(fragmentedPath[i], mainCommand);
+        			if(file.exists()) {
+        				System.out.println(mainCommand + "is" + file.getAbsolutePath());
+        			}
         			
         		}
+     
         	
         	}
         }
