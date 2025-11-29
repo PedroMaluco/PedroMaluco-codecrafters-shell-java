@@ -11,15 +11,15 @@ public class Main {
         String wholeCommand = sc.nextLine().toLowerCase();
         String[] fragmented = wholeCommand.split(" ");
         String mainCommand = fragmented[0];
-        if(fragmented[0].equals("exit")) {
+        if(mainCommand.equals("exit")) {
         	break;
         }
-        if(fragmented[0].equals("echo")) {
+        if(mainCommand.equals("echo")) {
         	String printable = wholeCommand.substring(5, wholeCommand.length());
         	System.out.println(printable);
         	
         }
-        if(fragmented[0].equals("type")) {
+        if(mainCommand.equals("type")) {
         	if (fragmented[1].equals("exit") || fragmented[1].equals("echo") || fragmented[1].equals("type")) {
         		String printable = fragmented[1];
             	System.out.println(printable + " is a shell builtin");
