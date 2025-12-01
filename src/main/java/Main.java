@@ -9,8 +9,8 @@ public class Main {
     	while(true) {
         System.out.print("$ ");
         String wholeCommand = sc.nextLine().toLowerCase();
-        String[] fragmented = wholeCommand.split(" ");
-        String mainCommand = fragmented[0];
+        String[] fragmentedCommand = wholeCommand.split(" ");
+        String mainCommand = fragmentedCommand[0];
         if(mainCommand.equals("exit")) {
         	break;
         }
@@ -20,8 +20,8 @@ public class Main {
         	
         }
         if(mainCommand.equals("type")) {
-        	if (fragmented[1].equals("exit") || fragmented[1].equals("echo") || fragmented[1].equals("type")) {
-        		String printable = fragmented[1];
+        	if (fragmentedCommand[1].equals("exit") || fragmentedCommand[1].equals("echo") || fragmentedCommand[1].equals("type")) {
+        		String printable = fragmentedCommand[1];
             	System.out.println(printable + " is a shell builtin");
         	}
         	else {
@@ -29,17 +29,15 @@ public class Main {
         		String[] fragmentedPath = path.split(":");
         		
         		for (int i=0; i < fragmentedPath.length; i++) {
-        			File file = new File(fragmentedPath[i], mainCommand);
-        			if(file.exists()) {
-        				System.out.println(mainCommand + "is" + file.getAbsolutePath());
+        			File file = new File(fragmentedPath[i], fragmentedCommand[1]);
+        			if(file.exists() && file.canExecute()) {
+        				System.out.println(fragmentedCommand[1] + " is " + file.getAbsolutePath());
+        				break;
         			}
-        			
         		}
-     
-        	
         	}
         }
-        if(!fragmented[0].equals("exit") && !fragmented[0].equals("echo") && !fragmented[0].equals("type")) {
+        if(!fragmentedCommand[0].equals("exit") && !fragmentedCommand[0].equals("echo") && !fragmentedCommand[0].equals("type")) {
         	System.out.println(wholeCommand+": command not found");
         	}
         }
