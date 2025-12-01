@@ -1,5 +1,4 @@
 import java.io.File;
-import java.lang.reflect.Executable;
 import java.util.Scanner;
 
 public class Main {
@@ -33,6 +32,9 @@ public class Main {
         			if(file.exists() && file.canExecute()) {
         				System.out.println(fragmentedCommand[1] + " is " + file.getAbsolutePath());
         				break;
+        			}
+        			if(!file.exists() && i == fragmentedPath.length-1) {
+        				System.out.println(fragmentedCommand[1] + ": not found");
         			}
         		}
         	}
