@@ -42,6 +42,8 @@ public class Main {
 			if (file.exists() && file.canExecute()) {
 				try {
 					Runtime.getRuntime().exec(fragmentedCommand);
+					System.out.println
+					("Program was passed " +fragmentedCommand.length+ "args (including program name).");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
