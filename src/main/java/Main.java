@@ -16,7 +16,10 @@ public class Main {
         String[] fragmentedCommand = wholeCommand.split(" ");
         String mainCommand = fragmentedCommand[0];
         
-        if(mainCommand.equals("exit") || mainCommand.equals("echo") || mainCommand.equals("type")) {
+        if(mainCommand.equals("exit") || 
+        		mainCommand.equals("echo") || 
+        		mainCommand.equals("type") || 
+        		mainCommand.equals("pwd")) {
         	loop = mainShellBuiltIns(wholeCommand);
         }
         else if(findExecutableApp(wholeCommand) == true) {
@@ -44,7 +47,6 @@ public class Main {
 			if (file.exists() && file.canExecute()) {
 				Process process = new ProcessBuilder(fragmentedCommand).start();
 				BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-				
 				String s = null;
 				while ((s=reader.readLine()) != null) {
 					System.out.println(s);
@@ -105,6 +107,11 @@ public class Main {
 			String printable = wholeCommand.substring(5, wholeCommand.length());
 			System.out.println(printable);
 			return loop = true;
+		}
+		else if(mainCommand.equals("pwd")) {
+			System.out.println(System.getProperty("user.dir"));
+			return loop = true;
+		
 		}
 		else {
 			if(fragmentedCommand[1].equals("exit") || fragmentedCommand[1].equals("echo") || fragmentedCommand[1].equals("type")) {
