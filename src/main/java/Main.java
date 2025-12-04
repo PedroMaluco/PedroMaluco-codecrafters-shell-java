@@ -44,6 +44,14 @@ public class Main {
 					Runtime.getRuntime().exec(fragmentedCommand);
 					System.out.println
 					("Program was passed " +fragmentedCommand.length+ " args (including program name).");
+					System.out.println("Arg #0 (program name): " + fragmentedCommand[0]);
+					if(fragmentedCommand.length >= 2) {
+						System.out.println("Arg #1: " + fragmentedCommand[1]);
+					}
+					if(fragmentedCommand.length >= 3) {
+						System.out.println("Arg #2: " + fragmentedCommand[2]);
+					}
+					System.out.println("Program signature: " + Runtime.getRuntime().exec(fragmentedCommand).pid());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
