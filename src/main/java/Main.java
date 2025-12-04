@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
@@ -32,7 +34,7 @@ public class Main {
 	
 	
 
-	public static void runApp(String wholeCommand) {
+	public static void runApp(String wholeCommand) throws IOException {
 		String envPath = System.getenv("PATH");
 		String[] fragmentedPath = envPath.split(":");
 		String[] fragmentedCommand = wholeCommand.split(" ");
@@ -40,25 +42,18 @@ public class Main {
 		for (int i=0; i < fragmentedPath.length;) {
 			File file = new File(fragmentedPath[i], targetExecutable);
 			if (file.exists() && file.canExecute()) {
-				try {
-					Runtime.getRuntime().exec(fragmentedCommand);
-					System.out.println
-					("Program was passed " +fragmentedCommand.length+ " args (including program name).");
-					System.out.println("Arg #0 (program name): " + fragmentedCommand[0]);
-					if(fragmentedCommand.length >= 2) {
-						System.out.println("Arg #1: " + fragmentedCommand[1]);
-					}
-					if(fragmentedCommand.length >= 3) {
-						System.out.println("Arg #2: " + fragmentedCommand[2]);
-					}
-					System.out.println("Program signature: " + Runtime.getRuntime().exec(fragmentedCommand).pid());
-				} catch (IOException e) {
-					e.printStackTrace();
+				Process process = new ProcessBuilder(fragmentedCommand).start();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+				
+				String s = null;
+				while ((s=reader.readLine()) != null) {
+					System.out.println(s);
+					
 				}
-				}
-				return;
 			}
+				return;
 		}
+	}
 
 	
 	public static boolean findAppType(String wholeCommand) {
