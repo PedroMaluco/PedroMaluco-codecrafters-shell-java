@@ -35,7 +35,6 @@ public class Main {
 	public static void runApp(String wholeCommand) {
 		String envPath = System.getenv("PATH");
 		String[] fragmentedPath = envPath.split(":");
-		
 		String[] fragmentedCommand = wholeCommand.split(" ");
 		String targetExecutable = fragmentedCommand[0];
 		for (int i=0; i < fragmentedPath.length;) {
@@ -72,9 +71,11 @@ public class Main {
 		return false;
 	}
 	
-	public static boolean findExecutableApp(String targetApp) {
+	public static boolean findExecutableApp(String wholeCommand) {
 		String envPath = System.getenv("PATH");
 		String[] fragmentedEnviromentPath = envPath.split(":");
+		String[] fragmentedCommand = wholeCommand.split(" ");
+		String targetApp = fragmentedCommand[0];
 		
 		for (int i=0;i<fragmentedEnviromentPath.length;i++) {
 			File file = new File(fragmentedEnviromentPath[i], targetApp);
