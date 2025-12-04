@@ -114,7 +114,10 @@ public class Main {
 		
 		}
 		else {
-			if(fragmentedCommand[1].equals("exit") || fragmentedCommand[1].equals("echo") || fragmentedCommand[1].equals("type")) {
+			if(fragmentedCommand[1].equals("exit") ||
+					fragmentedCommand[1].equals("echo") || 
+					fragmentedCommand[1].equals("type") || 
+					fragmentedCommand[1].equals("pwd")) {
 				System.out.println(fragmentedCommand[1] + " is a shell builtin");
 				return loop = true;
 			}
