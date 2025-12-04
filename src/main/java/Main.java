@@ -38,21 +38,19 @@ public class Main {
 		
 		String[] fragmentedCommand = wholeCommand.split(" ");
 		String targetExecutable = fragmentedCommand[0];
-		for (int i=0; i < fragmentedPath.length; i++) {
+		for (int i=0; i < fragmentedPath.length;) {
 			File file = new File(fragmentedPath[i], targetExecutable);
 			if (file.exists() && file.canExecute()) {
-				ProcessBuilder processBuilder = new ProcessBuilder(file.getAbsolutePath());
 				try {
-					processBuilder.start();
+					Runtime.getRuntime().exec(fragmentedCommand);
 				} catch (IOException e) {
 					e.printStackTrace();
+				}
 				}
 				return;
 			}
 		}
-		return;
-		
-	}
+
 	
 	public static boolean findAppType(String wholeCommand) {
 		String envPath = System.getenv("PATH");
