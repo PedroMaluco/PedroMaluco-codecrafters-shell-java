@@ -12,6 +12,7 @@ public class Main {
 		
     	while(loop==true) {
         System.out.print("$ ");
+        System.out.println("");
         String wholeCommand = sc.nextLine();
         String[] fragmentedCommand = wholeCommand.split(" ");
         String mainCommand = fragmentedCommand[0];
@@ -32,7 +33,7 @@ public class Main {
    }
     	sc.close();
 }
-	
+		
 	
 	
 	
