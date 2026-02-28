@@ -9,10 +9,9 @@ public class Main {
         // TODO: Uncomment the code below to pass the first stage
     	Scanner sc = new Scanner(System.in);
 		boolean loop = true;
-		
+		System.out.println(System.getProperty("user.dir"));
     	while(loop==true) {
         System.out.print("$ ");
-        System.out.println("");
         String wholeCommand = sc.nextLine();
         String[] fragmentedCommand = wholeCommand.split(" ");
         String mainCommand = fragmentedCommand[0];
@@ -36,6 +35,14 @@ public class Main {
 		
 	
 	
+    
+    
+    
+    public static void advanceOrRetreatDirectory(String wholeCommnand) {
+    	String currentDir = System.getProperty("user.dir");
+    	
+    	
+    }
 	
 
 	public static void runApp(String wholeCommand) throws IOException {
