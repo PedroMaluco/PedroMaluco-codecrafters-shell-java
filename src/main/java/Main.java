@@ -46,7 +46,7 @@ public class Main {
     		if(file.isDirectory() && file.exists()) {
     			System.setProperty("user.dir", absoluteDirPath);
     		}
-    		else {
+    		else if (i+1 == fragmentedDirPath.length && !file.isDirectory() && !file.exists()){
     			System.out.printf("cd: %s: No such file or directory", absoluteDirPath);
     		}
     	}
