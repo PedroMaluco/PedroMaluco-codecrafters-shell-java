@@ -132,6 +132,7 @@ public class Main {
 		}
 		else if (mainCommand.equals("cd")){
 			advanceOrRetreatDirectory(wholeCommand);
+			return loop = true;
 			
 		}
 		else {
