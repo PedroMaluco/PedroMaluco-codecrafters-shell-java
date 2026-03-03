@@ -9,7 +9,6 @@ public class Main {
         // TODO: Uncomment the code below to pass the first stage
     	Scanner sc = new Scanner(System.in);
 		boolean loop = true;
-		System.out.println(System.getProperty("user.dir"));
     	while(loop==true) {
         System.out.print("$ ");
         String wholeCommand = sc.nextLine();
@@ -38,9 +37,18 @@ public class Main {
     
     
     
-    public static void advanceOrRetreatDirectory(String wholeCommnand) {
-    	String currentDir = System.getProperty("user.dir");
-    	
+    public static void advanceOrRetreatDirectory(String wholeCommand) {
+    	String absoluteDirPath = wholeCommand.substring(3, wholeCommand.length());
+    	String[] fragmentedDirPath = absoluteDirPath.split("/");
+    	for(int i=0; i<fragmentedDirPath.length; i++) {
+    		File file = new File(fragmentedDirPath[i], fragmentedDirPath[fragmentedDirPath.length-1]);
+    		if(file.isDirectory() && file.exists()) {
+    			System.setProperty("user.dir", absoluteDirPath);
+    		}
+    		else {
+    			System.out.printf("cd: %s: No such file or directory", absoluteDirPath);
+    		}
+    	}
     	
     }
 	
