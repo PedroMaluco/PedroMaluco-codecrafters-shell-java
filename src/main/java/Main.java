@@ -18,7 +18,8 @@ public class Main {
         if(mainCommand.equals("exit") || 
         		mainCommand.equals("echo") || 
         		mainCommand.equals("type") || 
-        		mainCommand.equals("pwd")) {
+        		mainCommand.equals("pwd") ||
+        		mainCommand.equals("cd")) {
         	loop = mainShellBuiltIns(wholeCommand);
         }
         else if(findExecutableApp(wholeCommand) == true) {
@@ -128,6 +129,10 @@ public class Main {
 			System.out.println(System.getProperty("user.dir"));
 			return loop = true;
 		
+		}
+		else if (mainCommand.equals("cd")){
+			advanceOrRetreatDirectory(wholeCommand);
+			
 		}
 		else {
 			if(fragmentedCommand[1].equals("exit") ||
