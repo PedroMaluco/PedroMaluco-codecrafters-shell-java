@@ -41,6 +41,7 @@ public class Main {
     public static void advanceOrRetreatDirectory(String wholeCommand) {
     	String absoluteDirPath = wholeCommand.substring(3, wholeCommand.length());
     	String[] fragmentedDirPath = absoluteDirPath.split("/");
+    	/*
     	for(int i=0; i<fragmentedDirPath.length; i++) {
     		File file = new File(fragmentedDirPath[i], fragmentedDirPath[fragmentedDirPath.length-1]);
     		if(file.isDirectory() && file.exists()) {
@@ -50,9 +51,18 @@ public class Main {
     			System.out.println("cd: " + absoluteDirPath + ": No such file or directory");
     			
     		}
+    		*/
+    	
+    	File file = new File(absoluteDirPath);
+    	if (file.isDirectory() && file.exists()) {
+    		System.setProperty("user.dir", absoluteDirPath);
+    	}
+    	else {
+    		System.out.println("cd: " + absoluteDirPath + ": No such file or directory");
+    	}
     	}
     	
-    }
+    
 	
 
 	public static void runApp(String wholeCommand) throws IOException {
