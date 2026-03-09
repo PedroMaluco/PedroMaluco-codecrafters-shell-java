@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+
+
 public class Main {
     public static void main(String[] args) throws Exception {
         // TODO: Uncomment the code below to pass the first stage
@@ -40,27 +42,48 @@ public class Main {
     
     public static void advanceOrRetreatDirectory(String wholeCommand) {
     	String absoluteDirPath = wholeCommand.substring(3, wholeCommand.length());
-    	String[] fragmentedDirPath = absoluteDirPath.split("/");
-    	/*
-    	for(int i=0; i<fragmentedDirPath.length; i++) {
-    		File file = new File(fragmentedDirPath[i], fragmentedDirPath[fragmentedDirPath.length-1]);
-    		if(file.isDirectory() && file.exists()) {
-    			System.setProperty("user.dir", absoluteDirPath);
-    		}
-    		else if (i+1 == fragmentedDirPath.length && !file.isDirectory() && !file.exists()){
-    			System.out.println("cd: " + absoluteDirPath + ": No such file or directory");
-    			
-    		}
-    		*/
-    	
     	File file = new File(absoluteDirPath);
     	if (file.isDirectory() && file.exists()) {
     		System.setProperty("user.dir", absoluteDirPath);
     	}
+    	else if (absoluteDirPath.startsWith("../")) {
+    		int lastIndex = 0; 
+    		int count = 0;
+    		String toBeSearchedFor = "../";
+    		while(lastIndex != -1) {
+    			lastIndex = absoluteDirPath.indexOf(toBeSearchedFor, lastIndex);
+    			if (lastIndex != -1) {
+    				count++;
+    				lastIndex+= toBeSearchedFor.length();
+    			}
+    		}
+    		String currentDir = System.getProperty("user.dir");
+    		String[] fragmentedDirPath = currentDir.split("/");
+    		String backDir = fragmentedDirPath[fragmentedDirPath.length-(count+1)];
+    		String backDirFullPath = "";
+    		for (int i=0; i<=fragmentedDirPath.length; i++) {
+    			backDirFullPath += fragmentedDirPath[i] + "/";
+    			if(fragmentedDirPath[i] == backDir) {
+    				break;
+    			}
+    		}
+    		System.setProperty("user.dir", backDirFullPath);
+    	}
+    	else if(absoluteDirPath.startsWith("./") && file.isDirectory() && file.exists()) {
+    		String nextDirPath = absoluteDirPath.substring(2);
+    		file = new File(nextDirPath);
+    		System.setProperty("user.dir", nextDirPath);
+    		
+    	}
+    	
+    	else if(absoluteDirPath.equals("~")) {
+    		System.setProperty("user.dir", absoluteDirPath);
+    	}
+    	
     	else {
     		System.out.println("cd: " + absoluteDirPath + ": No such file or directory");
     	}
-    	}
+    }
     	
     
 	
