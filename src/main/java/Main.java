@@ -69,10 +69,10 @@ public class Main {
     		}
     		System.setProperty("user.dir", backDirFullPath);
     	}
-    	else if(absoluteDirPath.startsWith("./") && file.isDirectory() && file.exists()) {
+    	else if(absoluteDirPath.startsWith("./")) {
     		String nextDirPath = absoluteDirPath.substring(2);
-    		file = new File(nextDirPath);
-    		System.setProperty("user.dir", nextDirPath);
+    		String finalPath = System.getenv("user.dir") + "/" + nextDirPath;
+    		System.setProperty("user.dir", finalPath);
     		
     	}
     	
