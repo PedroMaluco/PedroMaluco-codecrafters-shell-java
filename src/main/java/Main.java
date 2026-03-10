@@ -80,7 +80,8 @@ public class Main {
     	}
     	
     	else if(absoluteDirPath.equals("~")) {
-    		System.setProperty("user.dir", absoluteDirPath);
+    		String homeDir = System.getProperty("$HOME");
+    		System.setProperty("user.dir", homeDir);
     	}
     	
     	else {
