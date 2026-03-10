@@ -62,10 +62,11 @@ public class Main {
     		String backDir = fragmentedDirPath[fragmentedDirPath.length-(count+1)];
     		String backDirFullPath = "";
     		for (int i=0; i<=fragmentedDirPath.length; i++) {
-    			backDirFullPath += fragmentedDirPath[i] + "/";
+    			backDirFullPath += fragmentedDirPath[i];
     			if(fragmentedDirPath[i] == backDir) {
     				break;
     			}
+    			backDirFullPath+= "/";
     		}
     		System.setProperty("user.dir", backDirFullPath);
     	}
