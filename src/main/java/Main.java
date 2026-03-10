@@ -70,11 +70,12 @@ public class Main {
     		System.setProperty("user.dir", backDirFullPath);
     	}
     	else if(absoluteDirPath.startsWith("./")) {
-    		String[] testVector = absoluteDirPath.split("/");
-    		String nextDirPath = testVector[1];
-    		String finalPath = System.getenv("user.dir") + "/" + nextDirPath;
+    		String nextDirPath = absoluteDirPath.substring(2);
+    		System.out.println("Were here to test this part");
+    		String currentDir = System.getenv("user.dir");
+    		String finalPath = currentDir + "/" + nextDirPath;
     		file = new File(finalPath);
-    		System.setProperty("user.dir", finalPath);
+    		System.setProperty("user.dir", file.getAbsolutePath());
     		
     	}
     	
