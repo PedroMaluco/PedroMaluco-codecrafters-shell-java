@@ -71,7 +71,6 @@ public class Main {
     	}
     	else if(absoluteDirPath.startsWith("./")) {
     		String nextDirPath = absoluteDirPath.substring(2);
-    		System.out.println("Were here to test this part");
     		String currentDir = System.getenv("user.dir");
     		String finalPath = currentDir + "/" + nextDirPath;
     		file = new File(finalPath);
