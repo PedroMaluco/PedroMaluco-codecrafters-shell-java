@@ -70,7 +70,8 @@ public class Main {
     		System.setProperty("user.dir", backDirFullPath);
     	}
     	else if(absoluteDirPath.startsWith("./")) {
-    		String nextDirPath = absoluteDirPath.substring(2);
+    		String[] testVector = absoluteDirPath.split("/");
+    		String nextDirPath = testVector[1];
     		String finalPath = System.getenv("user.dir") + "/" + nextDirPath;
     		file = new File(finalPath);
     		System.setProperty("user.dir", finalPath);
