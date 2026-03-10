@@ -43,7 +43,7 @@ public class Main {
     public static void advanceOrRetreatDirectory(String wholeCommand) {
     	String absoluteDirPath = wholeCommand.substring(3, wholeCommand.length());
     	File file = new File(absoluteDirPath);
-    	if (file.isDirectory() && file.exists()) {
+    	if (file.isDirectory() && file.exists() && !absoluteDirPath.startsWith("../") && !absoluteDirPath.startsWith("./")) {
     		System.setProperty("user.dir", absoluteDirPath);
     	}
     	else if (absoluteDirPath.startsWith("../")) {
@@ -72,6 +72,7 @@ public class Main {
     	else if(absoluteDirPath.startsWith("./")) {
     		String nextDirPath = absoluteDirPath.substring(2);
     		String finalPath = System.getenv("user.dir") + "/" + nextDirPath;
+    		file = new File(finalPath);
     		System.setProperty("user.dir", finalPath);
     		
     	}
