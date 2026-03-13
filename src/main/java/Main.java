@@ -62,7 +62,8 @@ public class Main {
 		}
 		
 		if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && quoteCount == 2 && singleQuoteCount == 2) {
-			System.out.println(toBePrinted);
+			String finalStringToBePrinted = toBePrinted.substring(1, toBePrinted.length()-1);
+			System.out.println(finalStringToBePrinted);
 		}
 		else if(quoteCount == 0) {
 			String[] segmentedToBePrinted = toBePrinted.split(" ");
