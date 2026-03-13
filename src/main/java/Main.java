@@ -62,7 +62,7 @@ public class Main {
 		}
 		
 		if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && quoteCount == 2 && singleQuoteCount == 2) {
-			String finalStringToBePrinted = toBePrinted.substring(1, toBePrinted.length()-1);
+			String finalStringToBePrinted = toBePrinted.replaceAll("'", " ");
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(quoteCount == 0) {
