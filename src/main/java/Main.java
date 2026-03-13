@@ -36,7 +36,55 @@ public class Main {
 }
 		
 	
-	
+	public static void evaluateString(String wholeCommand) {
+		String toBePrinted = wholeCommand.substring(5);
+		int quoteCount = 0;
+		int lastIndex = 0; 
+		int doubleQuoteCount = 0;
+		int singleQuoteCount = 0;
+		String singleQuote = "'";
+		String doubleQuote = "''";
+		while(lastIndex != -1) {
+			lastIndex = toBePrinted.indexOf(singleQuote, lastIndex);
+			if (lastIndex != -1) {
+				singleQuoteCount++;
+				quoteCount++;
+				lastIndex+= singleQuote.length();
+			}
+		}
+		while(lastIndex != -1) {
+			lastIndex = toBePrinted.indexOf(doubleQuote, lastIndex);
+			if (lastIndex != -1) {
+				quoteCount++;
+				doubleQuoteCount++;
+				lastIndex+= doubleQuote.length();
+			}
+		}
+		
+		if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && quoteCount == 2 && singleQuoteCount == 2) {
+			System.out.println(toBePrinted);
+		}
+		else if(quoteCount == 0) {
+			String[] segmentedToBePrinted = toBePrinted.split(" ");
+			String finalStringToBePrinted = "";
+			for(int i=0; i<segmentedToBePrinted.length; i++) {
+				finalStringToBePrinted+=segmentedToBePrinted[i];
+				if(i!=finalStringToBePrinted.length()-1) {
+					finalStringToBePrinted+=" ";
+				}
+			}
+			System.out.println(finalStringToBePrinted);
+			
+		}
+		else {
+			String[] segmentedToBePrinted = toBePrinted.split("''");
+			String finalStringToBePrinted = "";
+			for(int i=0; i<segmentedToBePrinted.length; i++) {
+				finalStringToBePrinted+=segmentedToBePrinted[i];
+				}
+			System.out.println(finalStringToBePrinted);
+		}
+	}
     
     
     
