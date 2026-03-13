@@ -208,8 +208,7 @@ public class Main {
 			return loop = false;
 		}
 		else if(mainCommand.equals("echo")) {
-			String printable = wholeCommand.substring(5, wholeCommand.length());
-			System.out.println(printable);
+			evaluateString(wholeCommand);
 			return loop = true;
 		}
 		else if(mainCommand.equals("pwd")) {
