@@ -70,7 +70,7 @@ public class Main {
 			String[] segmentedToBePrinted = toBePrinted.split(" ");
 			String finalStringToBePrinted = "";
 			for(int i=0; i<segmentedToBePrinted.length; i++) {
-				finalStringToBePrinted+=segmentedToBePrinted[i];
+				finalStringToBePrinted+=segmentedToBePrinted[i] +" ";
 			}
 			System.out.println(finalStringToBePrinted);
 			
