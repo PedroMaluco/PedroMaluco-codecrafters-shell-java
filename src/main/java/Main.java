@@ -66,6 +66,7 @@ public class Main {
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(quoteCount == 0) {
+			System.out.println("Am i entering this part?");
 			String[] segmentedToBePrinted = toBePrinted.split(" ");
 			String finalStringToBePrinted = "";
 			
