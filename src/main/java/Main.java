@@ -66,11 +66,18 @@ public class Main {
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(quoteCount == 0) {
-			//String strippedOfSpaces = toBePrinted.replaceAll(" ", "");
 			String[] segmentedToBePrinted = toBePrinted.split(" ");
 			String finalStringToBePrinted = "";
+			
 			for(int i=0; i<segmentedToBePrinted.length; i++) {
-				finalStringToBePrinted+=segmentedToBePrinted[i] + "";
+					if (segmentedToBePrinted[i].equals(" ")){
+					
+				}
+					else {
+						finalStringToBePrinted+=segmentedToBePrinted[i] + " ";
+					}
+				
+				
 			}
 			System.out.println(finalStringToBePrinted);
 			
