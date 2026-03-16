@@ -66,21 +66,21 @@ public class Main {
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(quoteCount == 0) {
-			System.out.println("Am i entering this part?");
-			String[] segmentedToBePrinted = toBePrinted.split(" ");
+			char[] toCharArray = toBePrinted.toCharArray();
 			String finalStringToBePrinted = "";
-			
-			for(int i=0; i<segmentedToBePrinted.length; i++) {
-					if (segmentedToBePrinted[i].equals(" ")){
-					
+			for(int i=0; i<toCharArray.length; i++) {
+				boolean space = true;
+				if(toCharArray[i] != ' ') {
+					finalStringToBePrinted+=toCharArray[i];
+					space = true;
 				}
-					else {
-						finalStringToBePrinted+=segmentedToBePrinted[i] + " ";
-					}
-				
-				
+				if(toCharArray[i] == ' ' && space == true) {
+					finalStringToBePrinted+=" ";
+					space = false;
+				}
 			}
 			System.out.println(finalStringToBePrinted);
+				
 			
 		}
 		else {
