@@ -68,8 +68,8 @@ public class Main {
 		else if(quoteCount == 0) {
 			char[] toCharArray = toBePrinted.toCharArray();
 			String finalStringToBePrinted = "";
+			boolean space = true;
 			for(int i=0; i<toCharArray.length; i++) {
-				boolean space = true;
 				if(toCharArray[i] != ' ') {
 					finalStringToBePrinted+=toCharArray[i];
 					space = true;
