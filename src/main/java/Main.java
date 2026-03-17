@@ -80,9 +80,9 @@ public class Main {
 				}
 			}
 			System.out.println(finalStringToBePrinted);
-				
-			
+		
 		}
+		
 		else {
 			String[] segmentedToBePrinted = toBePrinted.split("''");
 			String finalStringToBePrinted = "";
