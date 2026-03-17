@@ -80,16 +80,16 @@ public class Main {
 				}
 			}
 			System.out.println(finalStringToBePrinted);
-		
 		}
 		
 		else {
-			String[] segmentedToBePrinted = toBePrinted.split("''");
-			String finalStringToBePrinted = "";
-			for(int i=0; i<segmentedToBePrinted.length; i++) {
-				finalStringToBePrinted+=segmentedToBePrinted[i];
-				}
-			System.out.println(finalStringToBePrinted);
+			toBePrinted.replace("''", "");
+			toBePrinted.split("'");
+			System.out.println(toBePrinted);
+			// $ echo 'script     example' 'world''shell' hello''test
+			// Received: "'script     example' 'worldshell' hellotest"
+			// Expected: "script     example worldshell hellotest"
+			
 		}
 	}
     
