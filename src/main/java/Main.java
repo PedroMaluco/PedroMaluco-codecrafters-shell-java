@@ -87,6 +87,7 @@ public class Main {
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && doubleQuoteCount == 0) {
+			System.out.println("trying to parse");
 			parser(wholeCommand);
 			
 			}
