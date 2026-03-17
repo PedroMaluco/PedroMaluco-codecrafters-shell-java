@@ -259,7 +259,7 @@ public class Main {
 		if(mainCommand.equals("exit")) {
 			return loop = false;
 		}
-		else if(mainCommand.equals("echo")) {
+		else if(mainCommand.equals("echo") || mainCommand.equals("cat")) {
 			evaluateString(wholeCommand);
 			return loop = true;
 		}
