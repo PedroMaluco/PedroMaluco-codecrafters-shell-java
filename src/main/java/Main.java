@@ -18,7 +18,8 @@ public class Main {
         String mainCommand = fragmentedCommand[0];
         
         if(mainCommand.equals("exit") || 
-        		mainCommand.equals("echo") || 
+        		mainCommand.equals("echo") ||
+        		mainCommand.equals("cat") ||
         		mainCommand.equals("type") || 
         		mainCommand.equals("pwd") ||
         		mainCommand.equals("cd")) {
