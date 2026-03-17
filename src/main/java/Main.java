@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -85,44 +87,9 @@ public class Main {
 			System.out.println(finalStringToBePrinted);
 		}
 		else if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && doubleQuoteCount == 0) {
-			String finalStringToBePrinted = "";
-			String[] fragmentedString = toBePrinted.split("'");
-			for(int i=0; i<fragmentedString.length;i++) {
-				finalStringToBePrinted+=fragmentedString[i];
-				if(i+1 < fragmentedString.length) {
-					finalStringToBePrinted+=".";
-				}
+			parser(wholeCommand);
+			
 			}
-			
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		else {
 			String replacedDoubles = toBePrinted.replace("''", "");
@@ -133,11 +100,34 @@ public class Main {
 				finalStringToBePrinted+=splittedString[i];
 			}
 			System.out.println(finalStringToBePrinted);
-			// $ echo 'script     example' 'world''shell' hello''test
-			// Received: "'script     example' 'worldshell' hellotest"
-			// Expected: "script     example worldshell hellotest"
 			
 		}
+	}
+	
+	public static List<String> parser(String input){
+		List<String> tokens = new ArrayList<>();
+		StringBuilder builder = new StringBuilder();
+		boolean inQuote = true;
+		
+		for(char c : input.toCharArray()) {
+			if(c == '\'') {
+				inQuote = !inQuote;
+			}
+			else if(c == ' ' && inQuote == false) {
+				if(builder.isEmpty()) {
+					tokens.add(builder.toString());
+					builder = new StringBuilder();
+				}
+			}
+			else {
+				builder.append(c);
+				
+			}
+			if (!builder.isEmpty()) {
+	            tokens.add(builder.toString());
+	        }
+		}
+		return tokens;
 	}
     
     
