@@ -83,9 +83,14 @@ public class Main {
 		}
 		
 		else {
-			toBePrinted.replace("''", "");
-			toBePrinted.split("'");
-			System.out.println(toBePrinted);
+			String replacedDoubles = toBePrinted.replace("''", "");
+			String[] splittedString = replacedDoubles.split("'");
+			String finalStringToBePrinted = "";
+			
+			for (int i=0;i<splittedString.length;i++) {
+				finalStringToBePrinted+=splittedString[i];
+			}
+			System.out.println(finalStringToBePrinted);
 			// $ echo 'script     example' 'world''shell' hello''test
 			// Received: "'script     example' 'worldshell' hellotest"
 			// Expected: "script     example worldshell hellotest"
