@@ -38,10 +38,11 @@ public class Main {
 	
 	public static void evaluateString(String wholeCommand) {
 		String toBePrinted = wholeCommand.substring(5);
+		
 		int quoteCount = 0;
 		int lastIndex = 0; 
-		int doubleQuoteCount = 0;
 		int singleQuoteCount = 0;
+		int doubleQuoteCount = 0;
 		String singleQuote = "'";
 		String doubleQuote = "''";
 		while(lastIndex != -1) {
@@ -55,8 +56,8 @@ public class Main {
 		while(lastIndex != -1) {
 			lastIndex = toBePrinted.indexOf(doubleQuote, lastIndex);
 			if (lastIndex != -1) {
-				quoteCount++;
 				doubleQuoteCount++;
+				quoteCount++;
 				lastIndex+= doubleQuote.length();
 			}
 		}
@@ -69,6 +70,7 @@ public class Main {
 			char[] toCharArray = toBePrinted.toCharArray();
 			String finalStringToBePrinted = "";
 			boolean space = true;
+			
 			for(int i=0; i<toCharArray.length; i++) {
 				if(toCharArray[i] != ' ') {
 					finalStringToBePrinted+=toCharArray[i];
@@ -81,6 +83,45 @@ public class Main {
 			}
 			System.out.println(finalStringToBePrinted);
 		}
+		else if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && doubleQuoteCount == 0) {
+			String finalStringToBePrinted = "";
+			String[] fragmentedString = toBePrinted.split("'");
+			for(int i=0; i<fragmentedString.length;i++) {
+				finalStringToBePrinted+=fragmentedString[i];
+				if(i+1 < fragmentedString.length) {
+					finalStringToBePrinted+=".";
+				}
+			}
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		else {
 			String replacedDoubles = toBePrinted.replace("''", "");
