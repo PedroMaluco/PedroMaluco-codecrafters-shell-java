@@ -104,27 +104,28 @@ public class Main {
 	
 	public static List<String> parser(String input){
 		List<String> tokens = new ArrayList<>();
-		StringBuilder builder = new StringBuilder();
-		boolean inQuote = true;
+		StringBuilder currentArg = new StringBuilder();
+		boolean inQuote = false;
 		
 		for(char c : input.toCharArray()) {
 			if(c == '\'') {
 				inQuote = !inQuote;
 			}
 			else if(c == ' ' && inQuote == false) {
-				if(builder.isEmpty()) {
-					tokens.add(builder.toString());
-					builder = new StringBuilder();
+				if(!currentArg.isEmpty()) {
+					tokens.add(currentArg.toString());
+					currentArg = new StringBuilder();
 				}
 			}
 			else {
-				builder.append(c);
+				currentArg.append(c);
 				
 			}
-			if (!builder.isEmpty()) {
-	            tokens.add(builder.toString());
-	        }
+			
 		}
+		if (!currentArg.isEmpty()) {
+            tokens.add(currentArg.toString());
+        }
 		return tokens;
 	}
     
