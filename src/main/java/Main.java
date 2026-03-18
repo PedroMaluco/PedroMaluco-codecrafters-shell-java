@@ -47,52 +47,117 @@ public class Main {
 		String toBePrinted = wholeCommand.substring(5);
 		int quoteCount = 0;
 		int lastIndex = 0; 
-		int singleQuoteCount = 0;
-		String singleQuote = "'";
-		while(lastIndex != -1) {
-			lastIndex = toBePrinted.indexOf(singleQuote, lastIndex);
-			if (lastIndex != -1) {
-				singleQuoteCount++;
-				quoteCount++;
-				lastIndex+= singleQuote.length();
-			}
-		}
 		
-		if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && quoteCount == 2 && singleQuoteCount == 2) {
-			String finalStringToBePrinted = toBePrinted.replaceAll("'", "");
-			System.out.println(finalStringToBePrinted);
-		}
-		else if(quoteCount == 0) {
-			char[] toCharArray = toBePrinted.toCharArray();
-			String finalStringToBePrinted = "";
-			boolean space = true;
-			
-			for(int i=0; i<toCharArray.length; i++) {
-				if(toCharArray[i] != ' ') {
-					finalStringToBePrinted+=toCharArray[i];
-					space = true;
-				}
-				if(toCharArray[i] == ' ' && space == true) {
-					finalStringToBePrinted+=" ";
-					space = false;
+		if(toBePrinted.startsWith("\"")){
+		String doubleQuote = "\"\"";
+		int doubleQuoteCount = 0;
+			while(lastIndex != -1) {
+				
+				lastIndex = toBePrinted.indexOf(doubleQuote, lastIndex);
+					if (lastIndex != -1) {
+						doubleQuoteCount++;
+						quoteCount++;
+						lastIndex+= doubleQuote.length();
 				}
 			}
-			System.out.println(finalStringToBePrinted);
+			if(doubleQuoteCount == 2) {
+				String finalStringToBePrinted = toBePrinted.replaceAll("\"", "");
+				System.out.println(finalStringToBePrinted);
+			}
+			if(toBePrinted.contains("\"\"")) {
+				String finalStringToBePrinted = toBePrinted.replaceAll("\"\"", "");
+				System.out.println(finalStringToBePrinted);
+			}
+			else {
+				char[] toCharArray = toBePrinted.toCharArray();
+				String finalStringToBePrinted = "";
+				boolean space = true;
+				
+				for(char c : toCharArray) {
+					if(c != ' ') {
+						finalStringToBePrinted+=c;
+						space = true;
+					}
+					if(c == ' ' && space == true) {
+						finalStringToBePrinted+=" ";
+						space = false;
+					}
+				}
+				System.out.println(finalStringToBePrinted);
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 		
+		if(toBePrinted.startsWith("'")) {
+			int singleQuoteCount = 0;
+			String singleQuote = "'";
+			while(lastIndex != -1) {
+				lastIndex = toBePrinted.indexOf(singleQuote, lastIndex);
+				if (lastIndex != -1) {
+					singleQuoteCount++;
+					quoteCount++;
+					lastIndex+= singleQuote.length();
+				}
+			}
+			if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && quoteCount == 2 && singleQuoteCount == 2) {
+				String finalStringToBePrinted = toBePrinted.replaceAll("'", "");
+				System.out.println(finalStringToBePrinted);
+			}
+			else if(quoteCount == 0) {
+				char[] toCharArray = toBePrinted.toCharArray();
+				String finalStringToBePrinted = "";
+				boolean space = true;
+				
+				for(int i=0; i<toCharArray.length; i++) {
+					if(toCharArray[i] != ' ') {
+						finalStringToBePrinted+=toCharArray[i];
+						space = true;
+					}
+					if(toCharArray[i] == ' ' && space == true) {
+						finalStringToBePrinted+=" ";
+						space = false;
+					}
+				}
+				System.out.println(finalStringToBePrinted);
+			}
+			
+			
+			else {
+				String replacedDoubles = toBePrinted.replace("''", "");
+				String[] splittedString = replacedDoubles.split("'");
+				String finalStringToBePrinted = "";
+				
+				for (int i=0;i<splittedString.length;i++) {
+					finalStringToBePrinted+=splittedString[i];
+				}
+				System.out.println(finalStringToBePrinted);
+				
+				}
+			}
 		
-		else {
-			String replacedDoubles = toBePrinted.replace("''", "");
-			String[] splittedString = replacedDoubles.split("'");
-			String finalStringToBePrinted = "";
-			
-			for (int i=0;i<splittedString.length;i++) {
-				finalStringToBePrinted+=splittedString[i];
-			}
-			System.out.println(finalStringToBePrinted);
-			
-			}
-		}
+		
 		else {
 				List<String> arguments = parser(wholeCommand);
 				Process pb = new ProcessBuilder(arguments).start();
@@ -102,10 +167,9 @@ public class Main {
 					System.out.println(s);
 					
 				}
-				
-				}
+			}		
 		}
-	
+	}
 	
 	public static List<String> parser(String input){
 		List<String> tokens = new ArrayList<>();
