@@ -39,29 +39,22 @@ public class Main {
 }
 		
 	
-	public static void evaluateString(String wholeCommand) {
-		String toBePrinted = wholeCommand.substring(5);
+	public static void evaluateString(String wholeCommand) throws IOException {
+		String[] fragmentedCommand = wholeCommand.split(" ");
+		String firstField = fragmentedCommand[0];
 		
+		if(firstField.equals("echo")) {	
+		String toBePrinted = wholeCommand.substring(5);
 		int quoteCount = 0;
 		int lastIndex = 0; 
 		int singleQuoteCount = 0;
-		int doubleQuoteCount = 0;
 		String singleQuote = "'";
-		String doubleQuote = "''";
 		while(lastIndex != -1) {
 			lastIndex = toBePrinted.indexOf(singleQuote, lastIndex);
 			if (lastIndex != -1) {
 				singleQuoteCount++;
 				quoteCount++;
 				lastIndex+= singleQuote.length();
-			}
-		}
-		while(lastIndex != -1) {
-			lastIndex = toBePrinted.indexOf(doubleQuote, lastIndex);
-			if (lastIndex != -1) {
-				doubleQuoteCount++;
-				quoteCount++;
-				lastIndex+= doubleQuote.length();
 			}
 		}
 		
@@ -86,11 +79,7 @@ public class Main {
 			}
 			System.out.println(finalStringToBePrinted);
 		}
-		else if(toBePrinted.startsWith("'") && toBePrinted.endsWith("'") && doubleQuoteCount == 0) {
-			System.out.println("trying to parse");
-			parser(wholeCommand);
-			
-			}
+		
 		
 		else {
 			String replacedDoubles = toBePrinted.replace("''", "");
@@ -102,8 +91,16 @@ public class Main {
 			}
 			System.out.println(finalStringToBePrinted);
 			
+			}
 		}
-	}
+		else {
+				List<String> arguments = parser(wholeCommand);
+				ProcessBuilder pb = new ProcessBuilder(arguments);
+				pb.start();
+				
+				}
+		}
+	
 	
 	public static List<String> parser(String input){
 		List<String> tokens = new ArrayList<>();
@@ -244,7 +241,7 @@ public class Main {
 		return false;
 	}
 	
-	public static boolean mainShellBuiltIns(String wholeCommand) {
+	public static boolean mainShellBuiltIns(String wholeCommand) throws IOException {
 		boolean loop = false;
 		String[] fragmentedCommand = wholeCommand.split(" ");
 		String mainCommand = fragmentedCommand[0];
