@@ -95,8 +95,13 @@ public class Main {
 		}
 		else {
 				List<String> arguments = parser(wholeCommand);
-				ProcessBuilder pb = new ProcessBuilder(arguments);
-				pb.start();
+				Process pb = new ProcessBuilder(arguments).start();
+				BufferedReader reader = new BufferedReader(new InputStreamReader(pb.getInputStream()));
+				String s = null;
+				while ((s=reader.readLine()) != null) {
+					System.out.println(s);
+					
+				}
 				
 				}
 		}
@@ -118,10 +123,8 @@ public class Main {
 				}
 			}
 			else {
-				currentArg.append(c);
-				
+				currentArg.append(c);	
 			}
-			
 		}
 		if (!currentArg.isEmpty()) {
             tokens.add(currentArg.toString());
