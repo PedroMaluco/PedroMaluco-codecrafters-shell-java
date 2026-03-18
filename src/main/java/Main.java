@@ -61,6 +61,7 @@ public class Main {
 				}
 			}
 			if(doubleQuoteCount == 2) {
+				System.out.println("Fell into the right if");
 				String finalStringToBePrinted = toBePrinted.replaceAll("\"", "");
 				System.out.println(finalStringToBePrinted);
 			}
