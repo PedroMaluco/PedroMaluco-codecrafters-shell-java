@@ -77,7 +77,7 @@ public class Main {
 				boolean space = true;
 				
 				for(char c : toCharArray) {
-					if(c != ' ') {
+					if(c != ' ' && c != '"') {
 						finalStringToBePrinted+=c;
 						space = true;
 					}
