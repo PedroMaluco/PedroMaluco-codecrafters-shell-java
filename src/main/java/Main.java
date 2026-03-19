@@ -56,6 +56,7 @@ public class Main {
 		int lastIndex = 0; 
 		
 		if(toBePrinted.startsWith("\"")){
+			System.out.println("Got into the double quote if");
 		String doubleQuote = "\"\"";
 		int doubleQuoteCount = 0;
 			while(lastIndex != -1) {
