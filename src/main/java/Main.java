@@ -42,7 +42,7 @@ public class Main {
 	public static void evaluateString(String wholeCommand) throws IOException {
 		String[] fragmentedCommand = wholeCommand.split(" ");
 		String firstField = fragmentedCommand[0];
-		
+		System.out.println(firstField);
 		if(firstField.equals("echo")) {
 		String toBePrinted = "";
 		boolean first = true;
