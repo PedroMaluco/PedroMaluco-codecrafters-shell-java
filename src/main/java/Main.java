@@ -193,6 +193,7 @@ public class Main {
 				if(!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
 					currentArg = new StringBuilder();
+					currentArg.append(" ");
 				}
 			}
 			else {
