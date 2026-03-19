@@ -71,7 +71,7 @@ public class Main {
 				String modifiedString = toBePrinted.replaceAll("\"\"", "");
 				modifiedString.replaceAll("\"", " ");
 				String finalStringToBePrinted = "\"" + modifiedString + "\"";
-				System.out.println(finalStringToBePrinted);
+				System.out.println(modifiedString);
 			}
 			else {
 				char[] toCharArray = toBePrinted.toCharArray();
