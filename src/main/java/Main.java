@@ -51,7 +51,6 @@ public class Main {
 				else
 				toBePrinted+=str + " ";
 			}
-			System.out.printf("Line to be printed: ", toBePrinted);
 		
 		int quoteCount = 0;
 		int lastIndex = 0; 
