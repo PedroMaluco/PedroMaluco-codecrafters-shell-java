@@ -113,7 +113,7 @@ public class Main {
 			
 		}
 		
-		if(toBePrinted.startsWith("'")) {
+		else if(toBePrinted.startsWith("'")) {
 			int singleQuoteCount = 0;
 			String singleQuote = "'";
 			while(lastIndex != -1) {
