@@ -204,7 +204,6 @@ public class Main {
 			}
 			else {
 				currentArg.append(c);
-				soloSpace = !soloSpace;
 			}
 		}
 		if (!currentArg.isEmpty()) {
