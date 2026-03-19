@@ -56,7 +56,6 @@ public class Main {
 		int lastIndex = 0; 
 		
 		if(toBePrinted.startsWith("\"")){
-			System.out.println("Got into the double quote if");
 		String doubleQuote = "\"\"";
 		int doubleQuoteCount = 0;
 			while(lastIndex != -1) {
@@ -67,11 +66,6 @@ public class Main {
 						quoteCount++;
 						lastIndex+= doubleQuote.length();
 				}
-			}
-			if(quoteCount == 2) {
-				System.out.println("Fell into the right if");
-				String finalStringToBePrinted = toBePrinted.replaceAll("\"", "");
-				System.out.println(finalStringToBePrinted);
 			}
 			if(toBePrinted.contains("\"\"")) {
 				String finalStringToBePrinted = toBePrinted.replaceAll("\"\"", "");
