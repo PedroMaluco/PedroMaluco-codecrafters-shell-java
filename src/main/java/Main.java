@@ -196,6 +196,7 @@ public class Main {
 					currentArg = new StringBuilder();
 					
 					if(soloSpace == false) {
+						System.out.println("got into the soloSpace if");
 						soloSpace = !soloSpace;
 						currentArg.append(" ");
 						
