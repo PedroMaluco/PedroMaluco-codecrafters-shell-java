@@ -69,7 +69,7 @@ public class Main {
 			}
 			if(toBePrinted.contains("\"\"")) {
 				String modifiedString = toBePrinted.replaceAll("\"\"", "");
-				String ender = modifiedString.replaceAll("\"", " ");
+				String ender = modifiedString.replaceAll("\"", "");
 				String finalStringToBePrinted = "\"" + modifiedString + "\"";
 				System.out.println(ender);
 			}
