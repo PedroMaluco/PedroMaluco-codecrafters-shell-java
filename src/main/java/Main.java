@@ -49,7 +49,7 @@ public class Main {
 				if(first == true)
 					first=false;
 				else
-				toBePrinted+=str;
+				toBePrinted+=str + " ";
 			}
 			System.out.printf("Line to be printed: ", toBePrinted);
 		
