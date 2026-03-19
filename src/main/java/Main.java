@@ -43,8 +43,16 @@ public class Main {
 		String[] fragmentedCommand = wholeCommand.split(" ");
 		String firstField = fragmentedCommand[0];
 		
-		if(firstField.equals("echo")) {	
-		String toBePrinted = wholeCommand.substring(5);
+		if(firstField.equals("echo")) {
+		String toBePrinted = "";
+		boolean first = true;
+			for(String str : fragmentedCommand) {
+				if(first == true)
+					first=false;
+				else
+				toBePrinted+=str;
+			}
+		
 		int quoteCount = 0;
 		int lastIndex = 0; 
 		
@@ -60,7 +68,7 @@ public class Main {
 						lastIndex+= doubleQuote.length();
 				}
 			}
-			if(doubleQuoteCount == 2) {
+			if(quoteCount == 2) {
 				System.out.println("Fell into the right if");
 				String finalStringToBePrinted = toBePrinted.replaceAll("\"", "");
 				System.out.println(finalStringToBePrinted);
