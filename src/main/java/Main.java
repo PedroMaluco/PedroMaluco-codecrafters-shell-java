@@ -184,6 +184,7 @@ public class Main {
 		List<String> tokens = new ArrayList<>();
 		StringBuilder currentArg = new StringBuilder();
 		boolean inQuote = false;
+		boolean soloSpace = false;
 		
 		for(char c : input.toCharArray()) {
 			if(c == '\'' || c == '"') {
@@ -193,11 +194,17 @@ public class Main {
 				if(!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
 					currentArg = new StringBuilder();
-					currentArg.append(" ");
+					
+					if(soloSpace == false) {
+						soloSpace = !soloSpace;
+						currentArg.append(" ");
+						
+					}
 				}
 			}
 			else {
-				currentArg.append(c);	
+				currentArg.append(c);
+				soloSpace = !soloSpace;
 			}
 		}
 		if (!currentArg.isEmpty()) {
