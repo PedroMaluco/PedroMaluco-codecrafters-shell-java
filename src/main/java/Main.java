@@ -70,8 +70,12 @@ public class Main {
 			if(toBePrinted.contains("\"\"")) {
 				String modifiedString = toBePrinted.replaceAll("\"\"", "");
 				String ender = modifiedString.replaceAll("\"", "");
-				String finalStringToBePrinted = "\"" + modifiedString + "\"";
-				System.out.println(ender);
+				String finalStringToBePrinted = "";
+				List<String> args = parser(toBePrinted);
+				for (String str : args) {
+					finalStringToBePrinted+=str;
+				}
+				System.out.println(finalStringToBePrinted);
 			}
 			else {
 				char[] toCharArray = toBePrinted.toCharArray();
@@ -182,7 +186,7 @@ public class Main {
 		boolean inQuote = false;
 		
 		for(char c : input.toCharArray()) {
-			if(c == '\'') {
+			if(c == '\'' || c == '"') {
 				inQuote = !inQuote;
 			}
 			else if(c == ' ' && inQuote == false) {
