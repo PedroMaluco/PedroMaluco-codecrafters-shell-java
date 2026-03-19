@@ -204,6 +204,11 @@ public class Main {
 			}
 			else {
 				currentArg.append(c);
+				if (c == '\'') {
+					currentArg.append('\'');
+					
+				}
+				
 			}
 		}
 		if (!currentArg.isEmpty()) {
