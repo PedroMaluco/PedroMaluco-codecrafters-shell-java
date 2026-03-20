@@ -198,16 +198,15 @@ public class Main {
 							tokens.add(currentArg.toString());
 							currentArg = new StringBuilder();
 						}
-						else {
-							currentArg.append(c);
-						}
+					}
+					else {
+						currentArg.append(c);
 					}
 				}
 				if (!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
 				}
 			}
-			System.out.println(tokens);
 			return tokens;
 	}
 		
