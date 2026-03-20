@@ -188,7 +188,7 @@ public class Main {
 					uniqueSpace = !uniqueSpace;
 				}
 			}
-			else if(c == ' ' && insideDoubleQuotes) {
+			else if(c == ' ' && !insideDoubleQuotes) {
 				currentArg.append(c);
 			}
 			else if (c == ' ' && insideSingleQuotes) {
