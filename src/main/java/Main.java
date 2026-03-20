@@ -171,16 +171,17 @@ public class Main {
 		boolean insideDoubleQuotes = false;
 		
 		for (char c : input.toCharArray()) {
-			if (c == '\'' && insideDoubleQuotes == false) {
+			if (c == '\'' && !insideDoubleQuotes) {
 				insideSingleQuotes = !insideSingleQuotes;
 			}
-			else if (c == '"' && insideSingleQuotes == false) {
+			else if (c == '"' && !insideSingleQuotes) {
 				insideDoubleQuotes = !insideDoubleQuotes;
 			}
 			else if (c == ' ' && !insideDoubleQuotes && !insideSingleQuotes) {
 				if (!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
 					currentArg = new StringBuilder();
+					currentArg.append(c);
 				}
 			}
 			else {
