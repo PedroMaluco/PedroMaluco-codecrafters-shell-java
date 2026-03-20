@@ -68,6 +68,7 @@ public class Main {
 				}
 			}
 			if(toBePrinted.contains("\"\"")) {
+				System.out.println("Got into double quotes!");
 				String finalStringToBePrinted = "";
 				List<String> args = parser(toBePrinted);
 				for (String str : args) {
