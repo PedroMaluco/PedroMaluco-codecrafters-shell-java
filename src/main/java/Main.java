@@ -189,6 +189,9 @@ public class Main {
 					
 				}
 			}
+			else if(c == ' ' && insideDoubleQuotes) {
+				currentArg.append(c);
+			}
 			else {
 				currentArg.append(c);
 			}
