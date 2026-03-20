@@ -68,8 +68,6 @@ public class Main {
 				}
 			}
 			if(toBePrinted.contains("\"\"")) {
-				String modifiedString = toBePrinted.replaceAll("\"\"", "");
-				String ender = modifiedString.replaceAll("\"", "");
 				String finalStringToBePrinted = "";
 				List<String> args = parser(toBePrinted);
 				for (String str : args) {
@@ -99,22 +97,7 @@ public class Main {
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			
 			
 		}
@@ -183,42 +166,50 @@ public class Main {
 	public static List<String> parser(String input){
 		List<String> tokens = new ArrayList<>();
 		StringBuilder currentArg = new StringBuilder();
-		boolean inQuote = false;
-		boolean soloSpace = false;
-		
-		for(char c : input.toCharArray()) {
-			if(c == '\'' || c == '"') {
-				inQuote = !inQuote;
-			}
-			else if(c == ' ' && inQuote == false) {
-				if(!currentArg.isEmpty()) {
-					tokens.add(currentArg.toString());
-					currentArg = new StringBuilder();
-					
-					if(soloSpace == false) {
-						soloSpace = !soloSpace;
-						currentArg.append(' ');
-						
+		boolean insideQuotes = false;
+			if(input.startsWith("'")) {
+				for (char c : input.toCharArray()) {
+					if (c == '\'') {
+						insideQuotes = !insideQuotes;
+					}
+					if (c == ' ' && insideQuotes == false) {
+						if (!currentArg.isEmpty()) {
+							tokens.add(currentArg.toString());
+							currentArg = new StringBuilder();
+						}
+						else {
+							currentArg.append(c);
+						}
 					}
 				}
-			}
-			else {
-				currentArg.append(c);
-				if (c == '\'') {
-					currentArg.append("'");
-					
+				if (!currentArg.isEmpty()) {
+					tokens.add(currentArg.toString());
 				}
 				
 			}
-		}
-		if (!currentArg.isEmpty()) {
-            tokens.add(currentArg.toString());
-        }
-		return tokens;
+			else {
+				for(char c : input.toCharArray()) {
+					if (c == '"') {
+						insideQuotes = !insideQuotes;
+					}
+					if (c == ' ' && insideQuotes == false) {
+						if (!currentArg.isEmpty()) {
+							tokens.add(currentArg.toString());
+							currentArg = new StringBuilder();
+						}
+						else {
+							currentArg.append(c);
+						}
+					}
+				}
+				if (!currentArg.isEmpty()) {
+					tokens.add(currentArg.toString());
+				}
+			}
+			return tokens;
 	}
-    
-    
-    
+		
+
     public static void advanceOrRetreatDirectory(String wholeCommand) {
     	String absoluteDirPath = wholeCommand.substring(3, wholeCommand.length());
     	File file = new File(absoluteDirPath);
