@@ -167,46 +167,29 @@ public class Main {
 	public static List<String> parser(String input){
 		List<String> tokens = new ArrayList<>();
 		StringBuilder currentArg = new StringBuilder();
-		boolean insideQuotes = false;
-			if(input.startsWith("'")) {
-				for (char c : input.toCharArray()) {
-					if (c == '\'') {
-						insideQuotes = !insideQuotes;
-					}
-					if (c == ' ' && insideQuotes == false) {
-						if (!currentArg.isEmpty()) {
-							tokens.add(currentArg.toString());
-							currentArg = new StringBuilder();
-						}
-						else {
-							currentArg.append(c);
-						}
-					}
-				}
+		boolean insideSingleQuotes = false;
+		boolean insideDoubleQuotes = false;
+		
+		for (char c : input.toCharArray()) {
+			if (c == '\'' && insideDoubleQuotes == false) {
+				insideSingleQuotes = !insideSingleQuotes;
+			}
+			else if (c == '"' && insideSingleQuotes == false) {
+				insideDoubleQuotes = !insideDoubleQuotes;
+			}
+			else if (c == ' ' && !insideDoubleQuotes && !insideSingleQuotes) {
 				if (!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
+					currentArg = new StringBuilder();
 				}
-				
 			}
 			else {
-				for(char c : input.toCharArray()) {
-					if (c == '"') {
-						insideQuotes = !insideQuotes;
-					}
-					if (c == ' ' && insideQuotes == false) {
-						if (!currentArg.isEmpty()) {
-							tokens.add(currentArg.toString());
-							currentArg = new StringBuilder();
-						}
-					}
-					else {
-						currentArg.append(c);
-					}
-				}
-				if (!currentArg.isEmpty()) {
-					tokens.add(currentArg.toString());
-				}
+				currentArg.append(c);
 			}
+		}
+		if (!currentArg.isEmpty());
+			tokens.add(currentArg.toString());
+		
 			return tokens;
 	}
 		
