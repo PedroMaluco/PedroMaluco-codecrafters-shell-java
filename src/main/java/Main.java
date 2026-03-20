@@ -169,6 +169,7 @@ public class Main {
 		StringBuilder currentArg = new StringBuilder();
 		boolean insideSingleQuotes = false;
 		boolean insideDoubleQuotes = false;
+		boolean uniqueSpace = false;
 		
 		for (char c : input.toCharArray()) {
 			if (c == '\'' && !insideDoubleQuotes) {
@@ -181,7 +182,11 @@ public class Main {
 				if (!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
 					currentArg = new StringBuilder();
-					currentArg.append(c);
+					if (!uniqueSpace) {
+						currentArg.append(c);
+						uniqueSpace = !uniqueSpace;
+					}
+					
 				}
 			}
 			else {
