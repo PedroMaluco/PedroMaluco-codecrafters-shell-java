@@ -181,16 +181,19 @@ public class Main {
 			else if (c == ' ' && !insideDoubleQuotes && !insideSingleQuotes) {
 				if (!currentArg.isEmpty()) {
 					tokens.add(currentArg.toString());
-					currentArg = new StringBuilder();
-					if (!uniqueSpace) {
-						currentArg.append(c);
-						uniqueSpace = !uniqueSpace;
-					}
-					
+					currentArg = new StringBuilder();					
+				}
+				if (!uniqueSpace) {
+					currentArg.append(c);
+					uniqueSpace = !uniqueSpace;
 				}
 			}
 			else if(c == ' ' && insideDoubleQuotes) {
 				currentArg.append(c);
+			}
+			else if (c == ' ' && insideSingleQuotes) {
+				currentArg.append(c);
+				
 			}
 			else {
 				currentArg.append(c);
